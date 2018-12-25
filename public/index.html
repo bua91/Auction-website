@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <title>Bidding</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="bootstrap.min.css" rel="stylesheet">
+
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <link href="ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <script src="ie-emulation-modes-warning.js"></script>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <!-- Custom styles for this template -->
+  <link href="carousel.css" rel="stylesheet">
+</head>
+<!-- NAVBAR
+================================================== -->
+
+<body>
+ <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+           <a href = "users.html" target = "_blank">
+				<img class="first-slide" src="users.png" alt="First slide" >
+			</a>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>User Information.</h1>
+              
+              
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <a href = "order.html" target = "_blank">
+            <img class="second-slide" src="order1.jpg" alt="Second slide">
+		  </a>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Order Summary</h1>
+              
+              
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <a href = "post.html" target = "_blank">
+            <img class="third-slide" src="post.jpg" alt="Third slide">
+		  </a>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Post Items</h1>
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+  <!-- Marketing messaging and featurettes
+    ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="loginbox">
+
+    <h1>Login Here</h1>
+    <form id="loginform">
+      <p>Username</p>
+      <input type="text" name="username" placeholder="Enter Username">
+      <p>Password</p>
+      <input type="password" name="password" placeholder="Enter Password">
+      <input type="submit" name="" value="Login">
+      <a href="forgot password.html">Lost your password?</a><br>
+      <a href="user_registration.html">Don't have an account?</a>
+    </form>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="jquery.min.js"><\/script>')</script>
+    <script src="bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="ie10-viewport-bug-workaround.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+    </script>
+
+
+
+    <script>
+
+      $(document).ready(function () {
+        $("#hide").click(function () {
+          $("#bidding").toggle();
+        });
+      });
+
+      $(document).ready(function () {
+        $("#trendbutton").dblclick(function () {
+          $("#trendsection").fadeIn();
+        });
+      });
+
+      $(document).ready(function () {
+        $("#hirebutton").dblclick(function () {
+          $("#hiresection").fadeTo("slow", 0.5);
+        });
+      });
+      $(document).ready(function () {
+        $("#HDbutton").dblclick(function () {
+          $("#HDsection").fadeToggle();
+        });
+      });
+      $(document).ready(function () {
+        $("#fadeoutbutton").dblclick(function () {
+          $("#fadeoutsection").fadeOut();
+        });
+      });
+
+      $(document).ready(function () {
+        $("#section").mouseenter(function () {
+          $("#section").animate({ opacity: '0.4' }, "slow");
+          $("#section").animate({ opacity: '0.8' }, "slow");
+          $("#section").animate({ opacity: '0.4' }, "slow");
+          $("#section").animate({ opacity: '0.8' }, "slow");
+          $("#section").animate({ opacity: '0.4' }, "fast");
+          $("#section").animate({ opacity: '0.8' }, "fast");
+          $("#section").animate({ opacity: '0.4' }, "fast");
+          $("#section").animate({ opacity: '0.8' }, "fast");
+          $("#section").animate({ opacity: '0.4' }, "slow");
+          $("#section").animate({ opacity: '1' }, "slow", function () { alert("Done!") });
+
+
+
+        });
+
+        $("#section").mouseleave(function () {
+          $("#section").stop().animate();
+
+
+        });
+      });
+
+      $(document).ready(function () {
+        $("#buttonfadechain").keypress(function () {
+          $("#fadeone").fadeIn();
+          $("#fadetwo").fadeIn("slow");
+          $("#fadethree").fadeIn(3000);
+        });
+      });
+
+      $(document).ready(function () {
+        $("#custpress").keydown(function () {
+          $("#custsection").animate({ right: '500px', height: '300px', opacity: '0.4' }, "slow");
+          $("#custsection").animate({ right: '500px', width: '600px', opacity: '0.8' }, "slow");
+          $("#custsection").animate({ left: '285px', height: '100px', width: '600px', opacity: '1' }, "slow");
+
+        });
+
+      });
+
+      var rows;
+      $("#loginform").submit(function (event) {
+        console.log("client send login info")//redirect 
+        $.post('/logincheck', $("#loginform").serialize(), function (data) {
+          rows = data;
+          console.log(data.length) //data is the response from the backend
+          if (data.length == 0) {
+            //console.log("data not found")
+            window.location.replace("loginerror.html");
+          }
+          else {
+            //console.log("data found par kaise")
+            //redirect to home page
+            window.location.replace("homepage.html");
+          }
+        });
+        event.preventDefault();
+        //redirect
+      });
+
+    </script>
+</body>
+
+</html>

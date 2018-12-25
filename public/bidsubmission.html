@@ -1,0 +1,145 @@
+<html>
+
+<head>
+    <meta name="description" content="Free Web tutorials">
+    <meta name=" " content="">
+    <meta name=" content= "">
+    <meta name=" description" content="Free Web tutorials">
+    <link rel="stylesheet" type="text/css" href="firststyle.css">
+    <link rel="stylesheet" type="text/css" href="style2.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+    </script>
+
+    <script type="text/javascript" src="jquery-latest.js"></script>
+    <script type="text/javascript" src="jquery.tablesorter.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#orders").tablesorter();
+        }
+        );
+
+    </script>
+
+</head>
+
+<body>
+    <div id="topnavbar">
+        <ul class="topnavlist">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="bidsubmission.html">Bidding items</a></li>
+            <li><a href="post.html">Post items</a></li>
+            <li><a href="profile.html">Profile page</a></li>
+            <li><a href="logout.html">Logout</a></li>
+        </ul>
+    </div><br />
+    <br />
+    <button type="submit" id="dis"> Display the items on bid </button>
+
+    <table id="orders" class="my-table" border="1">
+        <thead>
+            <tr>
+                <th>Item ID</th>
+                <th>Items</th>
+                <th>Minimum price</th>
+                <th>Bid date</th>
+                <th>Bid time</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <h2> Please enter below the Item Id and price that you are going to bid now</h2>
+    <form id="bidpost" name="bdpst" autocomplete="on">
+        <h3>Item ID</h3>
+        <input id="itmid" type="text" name="itmid" size="10">
+        <br />
+        <h3>Bid price</h3>
+        <input id="bdprc" type="text" name="bdprc" size="10">
+        <br />
+
+        <input type="submit" value="Submit">
+    </form>
+    <script type="text/javascript" language="javascript" src="tablefilter/tablefilter.js"></script>
+
+    <script>
+        var tf = new TableFilter('orders', {
+            base_path: 'tablefilter/',
+            columns_exact_match: [false, false, false, false]
+            //console.log("its here!!!")
+        });
+        tf.init();
+    </script>
+
+
+    <script>
+        var rows;
+        $("#bidpost").submit(function (event) {
+            console.log("bid post send from client side")//redirect 
+            $.post('/bidpostroute', $("#bidpost").serialize(), function (data) {
+
+                rows = data;
+                console.log(data) //data is the response from the backend
+                if (data.length == 0) {
+                    //console.log("data not found")
+                    window.alert("Bid did not started for the following item");
+                }
+                else {
+                    //console.log("data found par kaise")
+                    //redirect to home page
+                    window.alet("bid started");
+                }
+            });
+            event.preventDefault();
+            //redirect
+        });
+    </script>
+
+    <script>
+        //get select * from items
+        $.get('/getitem', function (data) {
+            console.log(data) //data is the response from the backend
+            //show in tables.
+            function getResult() {
+                /* Read value from input fields */
+                var item = $("#item").val() || '',
+                    min_price = $("#min_price").val() || '',
+                    date = $("#date").val() || '',
+                    time = $("#time").val() || '';
+
+                var result = [],
+                    i;
+
+                for (i = 0; i < data.length; i++) {/*
+                if ((skills !== '' && data[i]["skills"].toUpperCase().indexOf(skills.toUpperCase()) !== -1) || (data[i]["email"].toUpperCase() === email.toUpperCase()) || (
+                    data[i]["username"].toUpperCase() === username.toUpperCase())) {*/
+                    result.push(data[i]);
+                    //}
+                }
+                return result;
+            };
+
+            $('#dis').click(function onClick() {
+                console.log("ghusa ");
+                var output = getResult();
+                var html = '';
+                $.each(output, function (key, value) {
+                    html += '<tr>';
+                    html += '<td>' + value.id + '</td>';
+                    html += '<td>' + value.item + '</td>';
+                    html += '<td>' + value.min_price + '</td>';
+                    html += '<td>' + value.date + '</td>';
+                    html += '<td>' + value.time + '</td>';
+                    html += '</tr>';
+                });
+                $('table tbody').html(html);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

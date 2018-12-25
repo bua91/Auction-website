@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="description" content="Free Web tutorials">
+  <meta name=" " content="">
+  <meta name=" content= "">
+  <meta name=" description" content="Free Web tutorials">
+  <link rel="stylesheet" type="text/css" href="firststyle.css">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+  </script>
+
+</head>
+
+<body>
+  <h2>Biding Information</h2>
+  <form id="adminInput" name="frmRegister">
+    <h3>Date</h3>
+    <input id="date" type="date" name="date" size="50">
+
+    <h3>Start Time</h3>
+    <input id="stime" type="time" name="stime" size="50">
+
+    <h3>End Time</h3>
+    <input id="etime" type="time" name="etime" size="50">
+
+    <h3>Total Allowed Items for Biding in a day</h3>
+    <input id="abid" type="text" name="abid" size="50">
+
+    <br>
+    <button type="submit" id="submit"> Submit </button>
+  </form>
+
+<script>
+  var rows;
+  $("#adminInput").submit(function (event) {
+	console.log("client side form sending") //redirect 
+  $.post('/specifyAuction', $("#adminInput").serialize(), function (data) {  
+  rows=data;
+ 	console.log(data) //data is the response from the backend
+  });
+  event.preventDefault();
+  //redirect
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="description" content="Free Web tutorials">
+  <meta name=" " content="">
+  <meta name=" content= "">
+  <meta name=" description" content="Free Web tutorials">
+  <link rel="stylesheet" type="text/css" href="firststyle.css">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+  </script>
+
+</head>
+
+
+
+<body>
+  <h2> USER INFORMATION</h2>
+  <form id="userform" name="frmRegister">
+
+    <h3>Username</h3>
+    <input id="username" type="text" name="username" size="50">
+
+    <h3>password</h3>
+    <input id="pswd" type="password" name="pswd" size="50">
+
+    <h3>security question: What is the name of your pet ?</h3>
+    <input id="security" type="text" name="security" size="50">
+
+    <h3>E-mail </h3>
+    <input id="email" type="email" name="email" size="50">
+
+    <h3>Phone </h3>
+    <input id="phone" type="tel" name="phone" size="50">
+
+    <br>
+    <button type="submit" id="submit"> Submit </button>
+
+  </form>
+  sadasdasdasdas
+
+  <script>
+    var rows;
+    $("#userform").submit(function (event) {
+      console.log("erffasdd")//redirect 
+      $.post('/register', $("#userform").serialize(), function (data) {
+
+        rows = data;
+        console.log(data) //data is the response from the backend
+      });
+      event.preventDefault();
+      //redirect
+    });
+
+  </script>
+
+</body>

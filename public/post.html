@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="description" content="Free Web tutorials">
+  <meta name=" " content="">
+  <meta name=" content= "">
+  <meta name=" description" content="Free Web tutorials">
+  <link rel="stylesheet" type="text/css" href="firststyle.css">
+  <link rel="stylesheet" type="text/css" href="style2.css">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+  </script>
+</head>
+
+<body>
+  <div id="topnavbar">
+    <ul class="topnavlist">
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="bidsubmission.html">Bidding items</a></li>
+      <li><a href="post.html">Post items</a></li>
+      <li><a href="profile.html">Profile page</a></li>
+      <li><a href="logout.html">Logout</a></li>
+    </ul>
+  </div><br />
+  <form id="contactform" name="frmRegister">
+
+    <h2> POST ITEMS </h2>
+    <h3>Item Title</h3>
+    <input id="itemTitle" type="text" name="itemName" size="50">
+
+    <h3>Item description</h3>
+    <textarea name="itemDescription" cols="40" rows="5">
+</textarea>
+
+    <h3>Minimum bidding price</h3>
+    <input id="minPrice" type="text" name="minimumPrice" size="50">
+
+    <h3>Auction Date</h3>
+    <input type="date" name="auctionDate"> <br><br>
+    <h3>Auction Time</h3>
+    <input type="time" name="auctionTime"> <br><br>
+
+    <h3>Upload item picture:</h3>
+    <input type="file" id="imgUp" name="imageUpload" accept="image/png, image/jpeg" /> <br><br>
+    <input type="submit" value="Submit">
+
+  </form>
+
+  <script>
+    var rows;
+    $("#contactform").submit(function (event) {
+      console.log("erffasdd")//redirect 
+      $.post('/item', $("#contactform").serialize(), function (data) {
+
+        rows = data;
+        console.log(data.length) //data is the response from the backend
+		
+		window.alert("item posted");
+      });
+      event.preventDefault();
+      //redirect
+    });
+  </script>
+
+</body>

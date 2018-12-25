@@ -1,0 +1,62 @@
+DROP database if exists auction;
+
+CREATE DATABASE auction;
+use auction;
+
+
+CREATE TABLE userdata
+(id INT AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(25),
+password VARCHAR(25),
+security VARCHAR(25),
+email VARCHAR(25),
+phone VARCHAR(10)
+);
+
+CREATE TABLE items
+(
+id INT AUTO_INCREMENT PRIMARY KEY,
+item VARCHAR(25),
+description VARCHAR(25),
+min_price float,
+date date,
+time time,
+image longblob
+);
+
+
+ALTER TABLE items
+ADD time time;
+
+INSERT INTO userdata (username,password,security,email,phone)
+VALUES("sourikdhua","ccd","ccdcd","sourik1994@gmail.com",8867601110);
+
+INSERT INTO items (item,description,min_price,date,time)
+VALUES("ball","ball",10,'2007-05-06','12:20:20');
+
+CREATE TABLE bid
+(
+user_id int,
+item_id int,
+bid_price float,
+FOREIGN KEY(user_id) REFERENCES userdata(id),
+FOREIGN KEY(item_id) REFERENCES items(id)
+);
+
+//User will send start time and end time of a particualr day.
+// devide (end-start)/max_items; 
+/* loop(max_items){
+    INSERT INTO admin_table (date , start, end ) VALUES ();
+}
+*/
+
+CREATE TABLE admin_table
+(
+date date,
+start_time time, //start time of slot
+end_time time,  // end time of slot
+availability bool
+);
+
+
+
